@@ -55,15 +55,15 @@ button {
   grid-column: span 2;
 }
 
-.calculator button[data-operator] {
+.calculator button[data-type] {
   background: #fe8e00;
 }
 
-.calculator button[data-operator='c'] {
+.calculator button[data-type='c'] {
   background: #a7aab1;
 }
 
-.calculator button[data-operator='equals'] {
+.calculator button[data-type='equals'] {
   background: #363439;
 }
 
