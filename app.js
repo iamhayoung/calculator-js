@@ -1,46 +1,83 @@
 const display = document.querySelector('#js-display');
 const buttons = Array.from(document.querySelectorAll('button'));
 
-let memory = ""; // 값 담는곳
-let checkOperator = true;
+let firstNumber = "";
+let secondNumber = "";
+let firstClick; // 플래그
+let secondClick; // 플래그
+let resultValue;
 
-// 연산자 누르면 연산자를 memory에 담음
-const appendOperator = (operator) => {
-  // checkOperator가 true일때는 연산자 입력안되게함
-  if (checkOperator) {
-    return;
+const handleCompute = (operator) => {
+  console.log(operator)
+  switch (operator) {
+    case '+':
+      // 더하기 할떄 처리
+      resultValue = firstNumber + secondNumber;
+      console.log('+')
+      console.log(`+ ${resultValue}`)
+      outputDisplay(resultValue)
+      break;
+    case '-':
+      // 빼기 할때 처리
+      resultValue = firstNumber - secondNumber;
+      console.log('-')
+      console.log(`- ${resultValue}`)
+      outputDisplay(resultValue)
+      break;
+    case '*':
+      // 곱하기 할때 처리
+      resultValue = firstNumber * secondNumber;
+      console.log('*')
+      console.log(`* ${resultValue}`)
+      outputDisplay(resultValue)
+      break;
+    case '/':
+      // 나누기할떄 처리
+      resultValue = firstNumber / secondNumber;
+      console.log('/')
+      console.log(`/ ${resultValue}`)
+      outputDisplay(resultValue)
+      break;
+    default:
+      break;
   }
-  console.log(`appendOperator: ${memory}`)
-  memory += operator;
-  checkOperator = true;
-  //곱하기 할때는 =버튼 안눌러도 결과가 떠야함
 }
 
-// 숫자 누르면 숫자를 memory에 담음
-const appendNumber = (num) => {
-  // 숫자입력할때는 checkOperator를 false로 해서 연산자 입력가능하게 함
-  checkOperator = false;
-  memory += num;
-  console.log(`appendNumber: ${memory}`)
+const outputDisplay = (resultValue) => {
+  display.value = resultValue;
 }
 
-// memory에 담긴 결과값을 출력
-const outputResult = () => {
-  display.value = memory;
-  console.log(`outputResult: ${memory}`)
+const handleOperator = (operator) => {
+  if (!firstClick) {
+    firstClick = true; // operator를 눌러주면 firstClick이 트루로 바뀌면서 printNum의 else가 실행됨
+  }
+  if (firstClick && secondClick) {
+    // printNum에서 secondNumber가 입력되면 트루가 됨과 동시에 실행됨
+    console.log('compute실행!')
+    handleCompute(operator);
+  }
 }
 
-// 계산하는거
-const compute = () => {
-  memory = (new Function('return ' + memory))();
-  console.log(`compute: ${memory}`)
+const printNum = (num) => {
+  // firstClick의 기본값은 null이기때문에 false. 즉 첫실행은 참에 해당됨
+  if (!firstClick) {
+    console.log('firstclick')
+    firstNumber = firstNumber + num;
+    display.value = firstNumber;
+  } else {
+    console.log('secondclick')
+    secondNumber = secondNumber + num;
+    display.value = secondNumber;
+    secondClick = true;
+  }
 }
 
-// memory를 빈칸으로 만들어주면서 클리어하는거
 const clearDisplay = () => {
-  display.value = "0";
-  memory = "";
-  checkOperator = true;
+  firstNumber = "";
+  secondNumber = "";
+  firstClick = false;
+  secondClick = false;
+  display.value = 0;
 }
 
 buttons.forEach(button => {
@@ -52,16 +89,14 @@ buttons.forEach(button => {
         break;
       case 'operator':
         let operator = event.target.innerText;
-        appendOperator(operator);
+        handleOperator(operator);
         break;
       case 'equals':
-        compute();
-        outputResult()
+        handleCompute();
         break;
       default:
-        let num = parseInt(event.target.innerText);
-        appendNumber(num);
-        outputResult();
+        let num = parseInt(event.target.innerText, 10);
+        printNum(num);
     }
   })
 })
