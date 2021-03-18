@@ -1,53 +1,54 @@
 const display = document.querySelector('#js-display');
 const buttons = Array.from(document.querySelectorAll('button'));
 
-let saveNumAndOperators = [];
-let firstNumClick = true;
+// 값 담는곳
+let memory = "";
 
 // 계산하는거
 const compute = () => {
-  console.log('계산하자아아아아')
+  memory = (new Function('return ' + memory))();
 }
 
-const saveOperator = (operator) => {
-  saveNumAndOperators.push = operator;
-  console.log(saveNumAndOperators)
+// 연산자 누르면 연산자를 memory에 담음
+const appendOperator = (operator) => {
+  memory += operator;
 }
 
-// 버튼 누르면 숫자를 디스플레이에 출력하는거
-const printNum = (num) => {
-  console.log(num)
-  if (firstNumClick && num === 0) {
-    return;
-  } else {
-    firstNumClick = false;
-    console.log('3')
-    display.innerText += num;
-  }
+// 숫자 누르면 숫자를 memory에 담음
+const appendNumber = (num) => {
+  memory += num;
 }
 
-// 클리어하는거
+// memory에 담긴 값을 출력
+const updateDisplay = () => {
+  display.value = memory;
+}
+
+// memory를 빈칸으로 만들어주면서 클리어하는거
 const clearDisplay = () => {
-  display.innerText = "0";
-  saveNumAndOperators = [];
+  display.value = "0";
+  memory = "";
 }
 
 buttons.forEach(button => {
   button.addEventListener('click', (event) => {
+    event.preventDefault();
     switch (button.dataset.type) {
       case 'c':
         clearDisplay();
         break;
       case 'operator':
-        let operator = event.target.textContent;
-        saveOperator(operator);
+        let operator = event.target.innerText;
+        appendOperator(operator);
         break;
       case 'equals':
         compute();
+        updateDisplay()
         break;
       default:
-        let num = parseInt(event.target.textContent);
-        printNum(num);
+        let num = parseInt(event.target.innerText);
+        appendNumber(num);
+        updateDisplay();
     }
   })
 })

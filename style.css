@@ -33,15 +33,17 @@ button {
   grid-gap: 10px;
 }
 
-.calculator div {
+.calculator input {
   grid-column: span 3;
   padding: 15px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   font-size: 37px;
+  background: #000;
   color: #fff;
   text-align: right;
+  border: none;
 }
 
 .calculator button {
