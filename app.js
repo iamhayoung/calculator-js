@@ -56,6 +56,10 @@ const handleEquals = () => {
     console.log('실행!')
     outputDisplay();
   }
+  firstNumber = "";
+  secondNumber = "";
+  // firstClick = false;
+  // secondClick = false;
 }
 
 const outputDisplay = () => {
