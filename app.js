@@ -88,7 +88,8 @@ const printNum = (num) => {
   if (!firstClick) {
     // firstNumber는 firstClick이 false일때 실행됨
     console.log('firstclick')
-    firstNumber += num;
+    console.log(firstNumber)
+    firstNumber += parseInt(num, 10);
     console.log(`firstnumber ${firstNumber}`)
     display.value = firstNumber;
   } else {
@@ -102,7 +103,7 @@ const printNum = (num) => {
 }
 
 const clearDisplay = () => {
-  firstNumber = "0";
+  firstNumber = 0;
   secondNumber = "";
   firstClick = false;
   secondClick = false;
