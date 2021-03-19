@@ -1,7 +1,7 @@
 const display = document.querySelector('#js-display');
 const buttons = Array.from(document.querySelectorAll('button'));
 
-let firstNumber = "";
+let firstNumber = 0;
 let secondNumber = "";
 let firstClick; // 플래그. false일때가 초기화된 상태임
 let secondClick; // 플래그. false일때가 초기화된 상태임
