@@ -92,13 +92,13 @@ const printNum = (num) => {
   if (!firstClick) {
     // firstNumber는 firstClick이 false일때 실행됨
     console.log('firstclick')
-    firstNumber = firstNumber + num;
+    firstNumber += num;
     console.log(`firstnumber ${firstNumber}`)
     display.value = firstNumber;
   } else {
     // secondNumber는 firstClick이 true일때 실행됨
     console.log('secondclick')
-    secondNumber = secondNumber + num;
+    secondNumber += num;
     console.log(`secondnumber ${secondNumber}`)
     display.value = secondNumber;
     secondClick = true;
