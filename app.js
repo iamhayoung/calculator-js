@@ -102,7 +102,7 @@ const printNum = (num) => {
 }
 
 const clearDisplay = () => {
-  firstNumber = "";
+  firstNumber = "0";
   secondNumber = "";
   firstClick = false;
   secondClick = false;
