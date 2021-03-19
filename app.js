@@ -3,44 +3,46 @@ const buttons = Array.from(document.querySelectorAll('button'));
 
 let firstNumber = "";
 let secondNumber = "";
-let firstClick; // 플래그
-let secondClick; // 플래그
+let firstClick; // 플래그. false일때가 초기화된 상태임
+let secondClick; // 플래그. false일때가 초기화된 상태임
 let resultValue;
 let saveOperator;
 
 const handleCompute = () => {
   console.log(saveOperator)
+  let firstValue = parseInt(firstNumber, 10);
+  let secondValue = parseInt(secondNumber, 10)
   switch (saveOperator) {
     case '+':
       // 더하기 할떄 처리
-      resultValue = firstNumber + secondNumber;
+      resultValue = firstValue + secondValue;
       console.log('+')
-      console.log(`firstNumber ${firstNumber}`)
-      console.log(`secondNumber ${secondNumber}`)
+      console.log(`firstValue ${firstValue}`)
+      console.log(`secondValue ${secondValue}`)
       console.log(`resultValue ${resultValue}`)
       return resultValue;
     case '-':
       // 빼기 할때 처리
-      resultValue = firstNumber - secondNumber;
+      resultValue = firstValue - secondValue;
       console.log('-')
-      console.log(`firstNumber ${firstNumber}`)
-      console.log(`secondNumber ${secondNumber}`)
+      console.log(`firstValue ${firstValue}`)
+      console.log(`secondValue ${secondValue}`)
       console.log(`resultValue ${resultValue}`)
       return resultValue;
     case '*':
       // 곱하기 할때 처리
-      resultValue = firstNumber * secondNumber;
+      resultValue = firstValue * secondValue;
       console.log('*')
-      console.log(`firstNumber ${firstNumber}`)
-      console.log(`secondNumber ${secondNumber}`)
+      console.log(`firstValue ${firstValue}`)
+      console.log(`secondValue ${secondValue}`)
       console.log(`resultValue ${resultValue}`)
       return resultValue;
     case '/':
       // 나누기할떄 처리
-      resultValue = firstNumber / secondNumber;
+      resultValue = firstValue / secondValue;
       console.log('/')
-      console.log(`firstNumber ${firstNumber}`)
-      console.log(`secondNumber ${secondNumber}`)
+      console.log(`firstValue ${firstValue}`)
+      console.log(`secondValue ${secondValue}`)
       console.log(`resultValue ${resultValue}`)
       return resultValue;
     default:
@@ -52,19 +54,21 @@ const handleCompute = () => {
 const handleEquals = () => {
   console.log(`equals눌렀을때 firstClick의 플래그는 ${firstClick}`)
   console.log(`equals눌렀을때 secondClick의 플래그는 ${secondClick}`)
+  let result = handleCompute();
   if (firstClick && secondClick) {
     console.log('실행!')
     outputDisplay();
   }
-  firstNumber = "";
-  secondNumber = "";
-  // firstClick = false;
-  // secondClick = false;
+  firstNumber = ""; // 초기화 시킴
+  secondNumber = ""; // 초기화 시킴
+  console.log(`equals눌렀을때 최종 값은 ${result}`)
+  firstClick = false;
+  secondClick = false;
 }
 
 const outputDisplay = () => {
   let result = handleCompute();
-  console.log(`계싼결과 출력값 ${result}`)
+  console.log(`계산결과 출력값 ${result}`)
   display.value = result;
   firstNumber = result;
   secondClick = false; // secondClick을 false로 바꿔줘서 outputDisplay가 실행안되게함
