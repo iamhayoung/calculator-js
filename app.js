@@ -15,7 +15,7 @@ const handleCompute = () => {
   switch (saveOperator) {
     case '+':
       // 더하기 할떄 처리
-      resultValue = firstValue + secondValue;
+      resultValue = parseInt(firstValue + secondValue);
       console.log('+')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
@@ -23,7 +23,7 @@ const handleCompute = () => {
       return resultValue;
     case '-':
       // 빼기 할때 처리
-      resultValue = firstValue - secondValue;
+      resultValue = parseInt(firstValue - secondValue);
       console.log('-')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
@@ -31,7 +31,7 @@ const handleCompute = () => {
       return resultValue;
     case '*':
       // 곱하기 할때 처리
-      resultValue = firstValue * secondValue;
+      resultValue = parseInt(firstValue * secondValue);
       console.log('*')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
@@ -39,7 +39,7 @@ const handleCompute = () => {
       return resultValue;
     case '/':
       // 나누기할떄 처리
-      resultValue = firstValue / secondValue;
+      resultValue = parseInt(firstValue / secondValue);
       console.log('/')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
@@ -59,11 +59,7 @@ const handleEquals = () => {
     console.log('실행!')
     outputDisplay();
   }
-  firstNumber = ""; // 초기화 시킴
-  secondNumber = ""; // 초기화 시킴
   console.log(`equals눌렀을때 최종 값은 ${result}`)
-  firstClick = false;
-  secondClick = false;
 }
 
 const outputDisplay = () => {
