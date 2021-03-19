@@ -15,7 +15,7 @@ const handleCompute = () => {
   switch (saveOperator) {
     case '+':
       // 더하기 할떄 처리
-      resultValue = parseInt(firstValue + secondValue);
+      resultValue = parseInt(firstValue + secondValue, 10);
       console.log('+')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
@@ -23,7 +23,7 @@ const handleCompute = () => {
       return resultValue;
     case '-':
       // 빼기 할때 처리
-      resultValue = parseInt(firstValue - secondValue);
+      resultValue = parseInt(firstValue - secondValue, 10);
       console.log('-')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
@@ -31,7 +31,7 @@ const handleCompute = () => {
       return resultValue;
     case '*':
       // 곱하기 할때 처리
-      resultValue = parseInt(firstValue * secondValue);
+      resultValue = parseInt(firstValue * secondValue, 10);
       console.log('*')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
@@ -39,7 +39,7 @@ const handleCompute = () => {
       return resultValue;
     case '/':
       // 나누기할떄 처리
-      resultValue = parseInt(firstValue / secondValue);
+      resultValue = parseInt(firstValue / secondValue, 10);
       console.log('/')
       console.log(`firstValue ${firstValue}`)
       console.log(`secondValue ${secondValue}`)
